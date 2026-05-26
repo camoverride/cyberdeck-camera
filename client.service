@@ -6,10 +6,10 @@ After=default.target
 Type=simple
 Restart=always
 WorkingDirectory=/home/%u/cyberdeck-camera
-ExecStart=/home/%u/cyberdeck/.venv/bin/python /home/%u/cyberdeck/client.py
+ExecStart=/home/%u/cyberdeck-camera/.venv/bin/python /home/%u/cyberdeck-camera/client.py
 StandardOutput=journal
 StandardError=journal
-Environment="PATH=/home/%u/cyberdeck/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Environment="PATH=/home/%u/cyberdeck-camera/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
 [Install]
 WantedBy=default.target
