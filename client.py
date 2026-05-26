@@ -7,7 +7,7 @@ from picamera2 import Picamera2
 
 
 # Config
-SERVER_URL = "http://192.168.1.100:5000/upload"
+SERVER_URL = "http://100.119.162.122:5000/upload"
 BUTTON_GPIO = 23
 
 # Set up the camera.
