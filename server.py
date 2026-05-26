@@ -29,12 +29,12 @@ def index():
     <html>
 
     <head>
-        <title>Pi Camera</title>
+        <title>cyberdeck-camera</title>
     </head>
 
     <body style="background:#111;color:white;text-align:center;">
 
-        <h1>Latest Image</h1>
+        <h1></h1>
 
         <img id="img"
              src="/latest.jpg"
