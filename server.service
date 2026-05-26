@@ -1,0 +1,15 @@
+[Unit]
+Description=cyberdeck camera service (server)
+After=default.target
+
+[Service]
+Type=simple
+Restart=always
+WorkingDirectory=/home/%u/cyberdeck-camera
+ExecStart=/home/%u/cyberdeck-camera/.venv/bin/python /home/%u/cyberdeck-camera/server.py
+StandardOutput=journal
+StandardError=journal
+Environment="PATH=/home/%u/cyberdeck-camera/.venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+
+[Install]
+WantedBy=default.target
