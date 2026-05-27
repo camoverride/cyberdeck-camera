@@ -8,11 +8,11 @@
 - `sudo apt install -y python3-picamera2 python3-libcamera`
 - `python3 -m venv .venv --system-site-packages`
 - `source .venv/bin/activate`
-- `pip install requirements-client.txt`
+- `pip install -r requirements-client.txt`
 
 Inside `client.py` edit the line under `# Config` to set the correct IP address.
 
-Start a service with systemd. This will start the program when the computer starts and revive it when it dies. This is expected to run on a Raspberry Pi 5 or Beelink running Ubuntu:
+Start a service with systemd. This will start the program when the computer starts and revive it when it dies:
 
 - `mkdir -p ~/.config/systemd/user`
 - `cat client.service > ~/.config/systemd/user/client.service`
@@ -36,12 +36,17 @@ Get the logs:
 
 - `git clone git@github.com:camoverride/cyberdeck-camera.git`
 - `cd cyberdeck-camera`
-- `sudo apt update`
 - `python3 -m venv .venv`
 - `source .venv/bin/activate`
-- `pip install requirements-server.txt`
+- `pip install -r requirements-server.txt`
+- `sudo apt remove gnome-keyring` (prevent keyring pop-up when running chromium)
+- `sudo reboot`
 
-Start a service with systemd. This will start the program when the computer starts and revive it when it dies. This is expected to run on a Raspberry Pi 5 or Beelink running Ubuntu:
+View on Pi: 
+- `export DISPLAY=:0`
+- `chromium-browser --kiosk --incognito --noerrdialogs --disable-infobars --disable-session-crashed-bubble http://127.0.0.1:5000`
+
+Start a service with systemd. This will start the program when the computer starts and revive it when it dies:
 
 - `mkdir -p ~/.config/systemd/user`
 - `cat server.service > ~/.config/systemd/user/server.service`
