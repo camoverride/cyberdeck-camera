@@ -1,4 +1,6 @@
 import os
+import subprocess
+import threading
 import time
 from flask import Flask, request, send_file
 from pathlib import Path
@@ -74,8 +76,28 @@ def latest_image():
         mimetype="image/jpeg")
 
 
+# app.run() blocks, so open this in another thread
+def open_browser():
+
+    # Give time for the server to start.
+    time.sleep(5)
+
+    # Open the browser full screen.
+    subprocess.Popen([
+        "chromium-browser",
+        "--kiosk",
+        "--incognito",
+        "--noerrdialogs",
+        "--disable-infobars",
+        "--disable-session-crashed-bubble",
+        "--password-store=basic",
+        "http://127.0.0.1:5000"
+    ])
 
 if __name__ == "__main__":
+
+    # Open the browser in a thread after a 5 second pause.
+    threading.Thread(target=open_browser).start()
 
     app.run(
         host="0.0.0.0",
