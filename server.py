@@ -83,16 +83,19 @@ def open_browser():
     time.sleep(5)
 
     # Open the browser full screen.
-    subprocess.Popen([
-        "chromium-browser",
-        "--kiosk",
-        "--incognito",
-        "--noerrdialogs",
-        "--disable-infobars",
-        "--disable-session-crashed-bubble",
-        "--password-store=basic",
+    cmd = (
+        "DISPLAY=:0 "
+        "chromium-browser "
+        "--kiosk "
+        "--incognito "
+        "--noerrdialogs "
+        "--disable-infobars "
+        "--disable-session-crashed-bubble "
+        "--password-store=basic "
         "http://127.0.0.1:5000"
-    ])
+    )
+
+    subprocess.Popen(cmd, shell=True)
 
 if __name__ == "__main__":
 
