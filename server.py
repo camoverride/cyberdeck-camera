@@ -1,12 +1,18 @@
+import os
+import time
 from flask import Flask, request, send_file
 from pathlib import Path
 
 
 
+# Set the display to be local in case this is started via ssh.
+os.environ["DISPLAY"] = ":0"
+print(os.environ["DISPLAY"])
+time.sleep(1)
+
 # Config and boilerplate.
 UPLOAD_FILE = Path("latest.jpg")
 app = Flask(__name__)
-
 
 # Upload Endpoint
 @app.route("/upload", methods=["POST"])
