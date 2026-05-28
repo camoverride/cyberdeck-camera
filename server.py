@@ -100,7 +100,7 @@ def open_browser():
 if __name__ == "__main__":
 
     # Open the browser in a thread after a 5 second pause.
-    # threading.Thread(target=open_browser).start()
+    threading.Thread(target=open_browser).start()
 
     app.run(
         host="0.0.0.0",
